@@ -24,8 +24,9 @@ runs:
     - name: Install actionlint
       shell: bash
       run: |
-        sudo apt-get update
-        sudo apt-get install -y actionlint
+        wget https://github.com/rhysd/actionlint/releases/download/v1.10.0/actionlint_linux_amd64.tar.gz
+        tar zxvf actionlint_linux_amd64.tar.gz
+        sudo mv actionlint /usr/local/bin/
 
     - name: Lint actions
       id: lint
