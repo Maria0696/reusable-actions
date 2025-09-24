@@ -1,0 +1,43 @@
+name: Lint Actions
+
+description: "Lints all GitHub Actions in the repo using actionlint"
+
+author: "María Fernández de Córdova Cascales <fernandezdecordova.maria@gmail.com>"
+
+inputs:
+  path:
+    description: "Path to actions folder"
+    required: false
+    default: "./actions"
+
+outputs:
+  result:
+    description: "Result of linting actions"
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install actionlint
+      run: |
+        wget https://github.com/rhysd/actionlint/releases/download/v1.9.24/actionlint_linux_amd64.tar.gz
+        tar zxvf actionlint_linux_amd64.tar.gz
+        mv actionlint /usr/local/bin/
+
+    - name: Lint actions
+      id: lint
+      run: |
+        echo "Linting all action.yml files in ${{ inputs.path }}"
+        actionlint ${{ inputs.path }}/*.yml
+
+    - name: Set output
+      run: |
+        if [ "${{ steps.lint.outcome }}" == "success" ]; then
+          echo "result=success" >> $GITHUB_OUTPUT
+        else
+          echo "result=failure" >> $GITHUB_OUTPUT
+        fi
+
