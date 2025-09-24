@@ -1,0 +1,13 @@
+name: Test Lint Actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./actions/lint-actions
+        with:
+          path: "./actions"
