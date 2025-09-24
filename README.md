@@ -16,12 +16,12 @@
 
 ## 📦 Actions Included
 
-| Action        | Badge                                                                 | Description                        | Inputs                                   |
-|---------------|-----------------------------------------------------------------------|------------------------------------|------------------------------------------|
-| `lint`        | ![Lint](https://img.shields.io/badge/lint-✅-green?style=flat-square) | Runs linter & auto-fixes code      | `path` (string), `fix` (boolean)         |
-| `test`        | ![Test](https://img.shields.io/badge/test-✅-blue?style=flat-square)  | Runs unit/integration tests        | `path` (string)                          |
-| `deploy`      | ![Deploy](https://img.shields.io/badge/deploy-🚀-orange?style=flat-square) | Deploys to staging/production      | `environment` (string), `branch` (string)|
-| `update-docs` | ![Docs](https://img.shields.io/badge/docs-📄-purple?style=flat-square) | Generates/updates documentation    | `output-path` (string)                   |
+| Action        | Badge                                                                 | Type       | Description                        | Inputs                                   | Example Usage |
+|---------------|-----------------------------------------------------------------------|------------|------------------------------------|------------------------------------------|---------------|
+| `lint`        | ![Lint](https://img.shields.io/badge/lint-✅-green?style=flat-square) | composite  | Runs linter & auto-fixes code      | `path` (string), `fix` (boolean)         | `uses: ./actions/lint` |
+| `test`        | ![Test](https://img.shields.io/badge/test-✅-blue?style=flat-square)  | composite  | Runs unit/integration tests        | `path` (string)                          | `uses: ./actions/test` |
+| `deploy`      | ![Deploy](https://img.shields.io/badge/deploy-🚀-orange?style=flat-square) | composite | Deploys to staging/production      | `environment` (string), `branch` (string)| `uses: ./actions/deploy` |
+| `update-docs` | ![Docs](https://img.shields.io/badge/docs-📄-purple?style=flat-square) | composite  | Generates/updates documentation    | `output-path` (string)                   | `uses: ./actions/update-docs` |
 
 > More actions coming soon! 🔥
 
