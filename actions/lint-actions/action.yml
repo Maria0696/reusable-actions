@@ -22,6 +22,7 @@ runs:
       uses: actions/checkout@v3
 
     - name: Install actionlint
+      shell: bash
       run: |
         wget https://github.com/rhysd/actionlint/releases/download/v1.9.24/actionlint_linux_amd64.tar.gz
         tar zxvf actionlint_linux_amd64.tar.gz
@@ -29,11 +30,13 @@ runs:
 
     - name: Lint actions
       id: lint
+      shell: bash
       run: |
         echo "Linting all action.yml files in ${{ inputs.path }}"
         actionlint ${{ inputs.path }}/*.yml
 
     - name: Set output
+      shell: bash
       run: |
         if [ "${{ steps.lint.outcome }}" == "success" ]; then
           echo "result=success" >> $GITHUB_OUTPUT
